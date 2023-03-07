@@ -1,0 +1,175 @@
+body{
+    font-family: "Roboto";
+}
+
+html{
+  font-size: 1px;
+}
+
+option{
+  white-space: normal;
+}
+
+.bprd_logo {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.topnav-about a {
+    float: none;
+    position: absolute;
+    left: 30%;
+    top: 50rem;
+    transform: translate(-50%, -50%);
+    font-size: 30rem;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+  }
+
+  .topnav-data a {
+    float: none;
+    position: absolute;
+    left: 41%;
+    top: 50rem;
+    transform: translate(-50%, -50%);
+    font-size: 30rem;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+  }
+
+  .topnav-glossary a {
+    float: none;
+    position: absolute;
+    left: 52%;
+    top: 50rem;
+    transform: translate(-50%, -50%);
+    font-size: 30rem;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+  }
+
+  .topnav-our-partners a {
+    float: none;
+    position: absolute;
+    left: 66%;
+    top: 50rem;
+    transform: translate(-50%, -50%);
+    font-size: 30rem;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+  }
+
+  .topnav-Join-Us a {
+    float: none;
+    position: absolute;
+    left: 80%;
+    top: 50rem;
+    transform: translate(-50%, -50%);
+    font-size: 30rem;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+  }
+
+.dopo-heading{
+    font-size: 65rem;
+    text-align: center;
+    color: #DD5634;
+    margin-top: 40rem;
+    margin-left: 80rem;
+}
+
+.homepage-photo{
+    float: left;
+    margin-left: 20rem;
+    padding-right: 20rem;
+}
+
+.homepage-text-1{
+    margin-right: 20rem;
+    font-size: 30rem;
+    font-weight: 500;
+}
+
+.homepage-text-2{
+    margin-left: 20rem;
+    font-size: 30rem;
+    font-weight: 500;
+}
+  
+.btn {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 12px;
+  color: #000000;
+  font-size: 30px;
+  background: #F4CEB8;
+  padding: 10px 40px 10px 40px;
+  text-decoration: none;
+  margin-left: 100px;
+  margin-top: 50px;
+}
+
+.select {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 15px;
+  margin-left: 100px;
+  width: 20%;
+  text-align: center;
+}    .select select {
+      font-family: 'Roboto';
+      font-size: 30px;
+      display: inline-block;
+      width: 100%;
+      cursor: pointer;
+      padding: 10px 15px;
+      outline: 0;
+      border: 1px solid #000000;
+      border-radius: 10px;
+      background: #F4CEB8;
+      color: #000000;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      text-align: center;
+  }
+      .select select::-ms-expand {
+          display: none;
+      }
+      .select select:hover,
+      .select select:focus {
+          color: #000000;
+          background: #F4CEB8;
+      }
+      .select select:disabled {
+          opacity: 0.5;
+          pointer-events: none;
+      }
+
+/* .select select:hover ~ .select_arrow,
+.select select:focus ~ .select_arrow {
+  border-top-color: #000000;
+}
+.select select:disabled ~ .select_arrow {
+  border-top-color: #000000;
+} */
+option{
+    width: 92px;
+    white-space:pre-wrap;
+    word-wrap: break-word;
+    font-size: 18px;
+}
+
+.image{
+  display: block;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
