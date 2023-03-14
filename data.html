@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <script src="index.js"></script>
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 
 <body>
@@ -43,30 +44,714 @@
     </nav>
     <h1 class="dopo-heading">DATA</h1>
     <div class="select">
-        <select>
+        <select id="my_select">
             <option >- - - - SELECT - - - -</option>
-            <option id="B1O1">BASIC POLICE STATISTICS</option>
-            <option id="B1O2">HUMAN RESOURCES</option>
-            <option id="B1O3">POLICE BUDGET</option>
-            <option id="B1O4">POLICE INFRASTRUCTURE</option>
-            <option id="B1O5">OTHER DATA/INFORMATION</option>
+            <option id="1" value="1" > BASIC POLICE STATISTICS</option>
+            <option id="2" value="1" >HUMAN RESOURCES</option>
+            <option id="3" value="1" >POLICE BUDGET</option>
+            <option id="4" value="1" >POLICE INFRASTRUCTURE</option>
+            <option id="5" value="1" >OTHER DATA/INFORMATION</option>
         </select>
 </div>
 
 <div class="select" style="margin-left: 700px;">
-    <select>
+    <select id="my_select2">
         <option>- - - - SELECT - - - -</option>
-        <option id="B2O1">STATE/UTs wise population per police person sanctioned</option>
-        <option id="B2O2">STATE/UTs wise total police per lakh of population sanctioned</option>
-        <option id="B2O3">STATE/UTs wise area in Sq. Kms. per police person sanctioned</option>
-        <option id="B2O4">STATE/UTs wise transport facility per 100 police personnel sanctioned and actual </option>
-        <option id="B2O5">Area and population of STATES/UTs police strenght, population per police person, area per police person & transport per 100 police personnel </option>
-        <option id="B2O6">sanctioned and actual police -- population and area ratio in STATES/UTs</option>
+        <option id="B2O1" >STATE/UTs wise population per police person sanctioned</option>
+        <option id="B2O2" >STATE/UTs wise total police per lakh of population sanctioned</option>
+        <option id="B2O3" >STATE/UTs wise area in Sq. Kms. per police person sanctioned</option>
+        <option id="B2O4" >STATE/UTs wise transport facility per 100 police personnel sanctioned and actual </option>
+        <option id="B2O5" >Area and population of STATES/UTs police strenght, population per police person, area per police person & transport per 100 police personnel </option>
+        <option id="B2O6" >sanctioned and actual police -- population and area ratio in STATES/UTs</option>
     </select>
 </div>
-
-<img class="image" id="image1" src="images\image1.png">
+<img src="" id="image">
+<img src=""  id="image1">
+<img src=""  id="image2">
+<img src=""  id="image3">
 
 </body>
+<script>
+    var ID;
+
+    var humanresources = {
+        "----------------SELECT---------------------": "201",
+        "State/UTs wise officer to field staff ratio": "202",
+        "Sanctioned and Actual strength of Central Armed Police forces": "203",
+        "Reservation of Scheduled Casts(SCs) approved by the State/UTs in the Government":"204",
+        "Reservation of Other Backward Classes(OBCs) approved by State/UTs": "205",
+        "Total Strength of Women Police from 2015-2020": "206",
+        "Sanctioned and Actual strength of Police Forces in States/UTs": "207",
+        "Sanctioned and Actual strength in different ranks in Civil Police in States/UTs": "208",
+        "Sanctioned and Actual strength in different ranks in District Armed Reserves (DAR) Police in States/UTs": "209",
+        "Sanctioned and Actual strength in different ranks in Special Armed Police Battalion in States/UTs": "210",
+        "Sanctioned and Actual strength in different ranks in IRB Police in States/UTs": "211",
+        "Actual strength of Commando Battalions in States/UTs": "212",
+        "Anti Human Trafficking Units in States/UTs": "213",
+        "Sanctioned and Actual strength in various ranks with vacancies of total police force in States/UTs": "214",
+        "Officer to Field staff ratio of sanctioned and actual strength of police in states/UTs": "215",
+        "Actual Strength of Scheduled Casts Staff in  States/UTs": "216",
+        "Actual Strength of Scheduled Tribes Staff in  States/UTs": "217",
+        "Actual Strength of Other Backward Classes Staff in  States/UTs": "218",
+        "Actual Strength of Women in Civil Police in  States/UTs": "219",
+        "Actual strength of Women in District Armed Reserves (DAR) Police in States/UTs": "220",
+        "Actual strength of Women in Special Armed Police Battalion in States/UTs": "221",
+        "Actual strength of women in different ranks in IRB Police in States/UTs": "222",
+        "Actual strength of Commando Battalions in States/UTs": "223"
+    };
+    var policebudget = {
+        "----------------SELECT---------------------": "301",
+        "TOTAL STATE BUDGET, BUDGET FOR POLICE, BUDGET FOR POLICE TRAINING, POLICE EXPENDITURE FOR THE FINANCIAL YEAR 2019 -- 2020 (REVISED) (FIGURES IN CRORES OF RUPEES)": "302",
+        "TOTAL STATE BUDGET, BUDGET FOR POLICE, BUDGET FOR POLICE TRAINING, POLICE EXPENDITURE FOR THE FINANCIAL YEAR 2020 -- 2021 (TENTATIVE) (FIGURES IN CRORES OF RUPEES)": "303",
+        "INCREASE / DECREASE IN TOTAL POLICE EXPENDITURE & TRAINING EXPENDITURE AS COMPARED TO FINANCIAL YEAR 2019 - 2020 (REVISED) & 2020-2021 (TENTATIVE) (FIGURES IN CRORES OF RUPEES)": "304", 
+        "MODERNIZATION GRANT BY CENTRAL & STATE GOVT TO THE POLICE & UTILIZATION IN THE FINANCIAL YEAR 2019 -2020 (REVISED) (FIGURES IN CRORES OF RUPEES)": "305",
+        "MODERNIZATION GRANT BY CENTRAL & STATE GOVT TO POLICE & UTILIZATION IN THE FINANCIAL YEAR 2020 - 2021 (TENTATIVE) (FIGURES IN CRORES OF RUPEES)": "306",
+        "BUDGET & EXPENDITURE OF CAPFs FOR THE FINANCIAL YEAR 2019 -2020 (REVISED) & FINANCIAL YEAR 2020 -2021 (TENTATIVE) (FIGURES IN CRORES OF RUPEES)": "307",
+        "TRENDS IN POLICE TRAINING EXPENDITURE": "308",
+        "MODERNISATION GRANT TO THE STATE POLICE FORCE": "309",
+    };
+    var policeinfra = {
+        "----------------SELECT---------------------": "401",
+        "Number of Police Stations": "402",
+        "Transport Facilities": "403",
+        "Family Quarters": "404", 
+        "NUMBER OF POLICE ZONES, RANGES, DISTRICTS, SUB-DIVISIONS, CIRCLES AND SANCTIONED POLICE STATIONS": "405",
+        "NUMBER OF SANCTIONED (S) AND ACTUAL (A) POLICE STATIONS (RURAL, URBAN & SPECIAL PURPOSE POLICE STATIONS) IN STATES/UTs": "406",
+        "NUMBER OF SANCTIONED (S) AND ACTUAL (A) POLICE OUTPOSTS (RURAL, URBAN & RAILWAY) IN STATES/UTs": "407",
+        "ACTUAL NUMBER OF SPECIAL PURPOSE POLICE STATIONS IN STATES/UTs": "408",
+        "POLICE COMMISSIONERATE SYSTEM IN INDIA": "409",
+        "SANCTIONED (S) STRENGTH OF CIVIL POLICE IN METRO CITIES HAVING POLICE COMMISSIONERATE SYSTEM": "410",
+        "SANCTIONED (S) STRENGTH OF DISTRICT ARMED RESERVE (DAR) POLICE IN METRO CITIES HAVING POLICE COMMISSIONERATE SYSTEM": "411",
+        "SANCTIONED (S) STRENGTH OF ARMED POLICE IN METRO CITIES HAVING POLICE COMMISSIONERATE SYSTEM": "412",
+        "VEHICLES AVAILABLE WITH STATES/UTs POLICE": "413",
+        "NUMBER OF SPECIAL VEHICLES AVAILABLE WITH STATES/UTs": "414",
+        "TRANSPORT RESOURCES PER 100 POLICE PERSONNEL": "415",
+        "ACTUAL STRENGTH OF VEHICLES AVAILABLE WITH CAPFs": "416",
+        "NUMBER OF SPECIAL PURPOSE VEHICLES AVAILABLE WITH CAPFs": "417",
+        "NUMBER OF POLICE STATIONS HAVING / NOT HAVING VEHICLES, TELEPHONES & WIRELESS / MOBILES IN STATES/UTs": "418",
+        "FAMILY QUARTERS AVAILABLE FOR OFFICERS OF THE RANK OF DY. SP & ABOVE, ASI TO INSPECTOR, CONSTABLE & HEAD CONSTABLE IN STATES/UTs": "419",
+        "FAMILY QUARTERS AVAILABLE FOR OFFICERS OF THE RANK OF ASSTT. COMMANDANT AND ABOVE , ASIs TO SUBEDAR MAJOR, CONSTABLE & HEAD CONSTABLE IN CAPFs": "420",
+        "EXPENDITURE ON CAPFs HOUSING CORPORATION IN FINANCIAL YEAR 2020 - 2021 (REVISED) (` IN CRORE)": "421",
+        "EXPENDITURE ON CAPFs HOUSING CORPORATION IN FINANCIAL YEAR 2021 - 2022 (TENTATIVE) (` IN CRORE)": "422",
+        "EXPENDITURE BY POLICE HOUSING CORPORATIONS IN FINANCIAL YEAR 2020 - 2021 (REVISED) (` IN CRORE)": "423",
+        "EXPENDITURE ON POLICE HOUSING CORPORATIONS IN FINANCIAL YEAR 2021 - 2022 (TENTATIVE) (` IN CRORE)": "424",
+        "POLICE OFFICES OPERATED FROM GOVERNMENT /HIRED BUILDINGS": "425"
+    };
+
+    var otherdata = {
+        "----------------SELECT---------------------": "501",
+        "NUMBER OF FORENSIC SCIENCE LABORATORIES / MOBILE FORENSIC SCIENCE VANS AVAILABLE WITH STATES/UTs":"502",
+        "NUMBER OF SERVERS, COMPUTERS, LAPTOPS AVAILABLE WITH STATE/UT POLICE":"503",
+        "NUMBER OF CCTV CAMERAS, SPEED GUNS & BREATH ANALYZERS AVAILABLE WITH STATE/UT POLICE":"504",
+        "NUMBER OF ANIMALS IN THE STATES/UTs POLICE":"505",
+        "NUMBER OF ANIMALS IN THE CAPFs":"506",
+        "NUMBER OF ACTUAL/EXISTING (RURAL +URBAN+ SPECIAL PURPOSE) POLICE STATIONS INSTALLED WITH CCTVS CAMERA IN STATES/UTs":"507",
+        "NUMBER OF COMPANIES OF CENTRAL ARMED POLICE FORCES (BSF, CRPF, CISF, ITBP, ETC.) DEPLOYED IN THE STATES/UTs FOR OVER SIX MONTHS DURING CALENDAR YEAR 2020 ":"508",
+        "NUMBER OF POLICE PERSONNEL DIRECTLY RECRUITED/ INDUCTED IN STATES/UTs DURING THE CALENDAR YEAR 2020":"509",
+        "NUMBER OF POLICE PERSONNEL DIRECTLY RECRUITED/ INDUCTED IN CAPFs DURING CALENDAR YEAR 2020":"510",
+        "NUMBER OF NEWLY RECRUITED POLICE PERSONNEL TRAINED IN STATES/UTs DURING THE CALENDAR YEAR 2020 (TENTATIVE)":"511",
+        "NUMBER OF DIRECTLY RECRUITED/ INDUCTED CAPFs PERSONNEL TRAINED DURING CALENDAR YEAR 2020 (TENTATIVE)":"512",
+        "STATISTICS REGARDING IPS OFFICERS (TENTATIVE)":"513",
+        "DATA REGARDING WOMEN HELP DESK SET UP IN POLICE STATION":"514",
+        "STATE/UT WISE NUMBER OF WOMEN POLICE STATION & THEIR LOCATION":"515",
+        "DETAILS OF POLICE MEDALS FOR GALLANTRY AWARDED TO POLICE PERSONNEL OF STATES/UTs / CENTRAL ARMED POLICE FORCES / CPOs, ETC. DURING 2020":"516",
+        "TERRORISM/EXTREMISM AFFECTED POLICE DISTRICTS":"517",
+        "CENTRAL ARMED POLICE FORCES(CAPFs) DEPLOYED IN THE STATES/UTs":"518",
+    };
+
+
+
+    $("#my_select").change(function () {
+        ID = $(this).children(":selected").attr("id");
+        console.log(ID);
+        if(ID==2){
+            var $el = $("#my_select2");
+            $el.empty(); // remove old options
+            $.each(humanresources, function (key, value) {
+                $el.append($("<option></option>")
+                    .attr("value", value).text(key));
+            });
+        }
+        if(ID==3){
+            var $el = $("#my_select2");
+            $el.empty(); // remove old options
+            $.each(policebudget, function (key, value) {
+                $el.append($("<option></option>")
+                    .attr("value", value).text(key));
+            });
+        }
+        if(ID==4){
+            var $el = $("#my_select2");
+            $el.empty(); // remove old options
+            $.each(policeinfra, function (key, value) {
+                $el.append($("<option></option>")
+                    .attr("value", value).text(key));
+            });
+        }
+        if(ID==5){
+            var $el = $("#my_select2");
+            $el.empty(); // remove old options
+            $.each(otherdata, function (key, value) {
+                $el.append($("<option></option>")
+                    .attr("value", value).text(key));
+            });
+        }
+    });
+    var S;
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==201){
+            document.getElementById('image').src="./images/image2.png";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==202){
+            document.getElementById('image').src="./images/image2.png  ";
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==203){
+            document.getElementById('image3').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==204){
+            document.getElementById('image').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==205){
+            document.getElementById('image').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==206){
+            document.getElementById('image').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==207){
+            document.getElementById('image').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==208){
+            document.getElementById('image').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==209){
+            document.getElementById('image').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==210){
+            document.getElementById('image').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==211){
+            document.getElementById('image11').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==212){
+            document.getElementById('image12').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==213){
+            document.getElementById('image13').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==214){
+            document.getElementById('image14').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==215){
+            document.getElementById('image15').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==216){
+            document.getElementById('image16').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==217){
+            document.getElementById('image17').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==218){
+            document.getElementById('image18').src="./images/image2.png  ";
+         }
+    });   
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==219){
+            document.getElementById('image19').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==220){
+            document.getElementById('image20').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==221){
+            document.getElementById('image21').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==222){
+            document.getElementById('image22').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==223){
+            document.getElementById('image23').src="./images/image2.png  ";
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==402){
+            document.getElementById('image').src="./images/pi1.png";
+
+         }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==403){
+            document.getElementById('image').src="./images/pi2.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==404){
+            document.getElementById('image').src="./images/pi3.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==405){
+            document.getElementById('image').src="./images/pi4.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==406){
+            document.getElementById('image').src="./images/pi5.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==407){
+            document.getElementById('image').src="./images/pi6.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==408){
+            // document.getElementById('image').src="./images/pi7.png";
+            document.getElementById('image1').src="./images/pi7-2.png";
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==409){
+            document.getElementById('image').src="./images/pi8.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==410){
+            document.getElementById('image').src="./images/pi9.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==411){
+            document.getElementById('image').src="./images/pi10.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==412){
+            document.getElementById('image').src="./images/pi11.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==413){
+            document.getElementById('image').src="./images/pi12.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==414){
+            document.getElementById('image').src="./images/pi13.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==415){
+            document.getElementById('image').src="./images/pi14.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==416){
+            document.getElementById('image').src="./images/pi15.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==417){
+            document.getElementById('image').src="./images/pi16.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==418){
+            document.getElementById('image').src="./images/pi17.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==419){
+            document.getElementById('image').src="./images/pi18.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==420){
+            document.getElementById('image').src="./images/pi19.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==421){
+            document.getElementById('image').src="./images/pi20.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==422){
+            document.getElementById('image').src="./images/pi21.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==423){
+            document.getElementById('image').src="./images/pi22.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==424){
+            document.getElementById('image').src="./images/pi23.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==425){
+            document.getElementById('image').src="./images/pi24.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==302){
+            document.getElementById('image').src="./images/pb1.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==303){
+            document.getElementById('image').src="./images/pb2.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==304){
+            document.getElementById('image').src="./images/pb3.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==305){
+            document.getElementById('image').src="./images/pb4.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==306){
+            document.getElementById('image').src="./images/pb5.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==307){
+            document.getElementById('image').src="./images/pb6.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==308){
+            document.getElementById('image').src="./images/pb7.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==309){
+            document.getElementById('image').src="./images/pb8.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==502){
+            document.getElementById('image').src="./images/od1.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==503){
+            document.getElementById('image').src="./images/od2.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==504){
+            document.getElementById('image').src="./images/od3.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==505){
+            document.getElementById('image').src="./images/od4.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==506){
+            document.getElementById('image').src="./images/od5.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==507){
+            document.getElementById('image').src="./images/od6.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==508){
+            document.getElementById('image').src="./images/od7.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==509){
+            document.getElementById('image').src="./images/od8.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==510){
+            document.getElementById('image').src="./images/od9.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==511){
+            document.getElementById('image').src="./images/od10.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==512){
+            document.getElementById('image').src="./images/od11.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==513){
+            document.getElementById('image').src="./images/od12.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==514){
+            document.getElementById('image').src="./images/od13.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==515){
+            document.getElementById('image').src="./images/od14.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==516){
+            document.getElementById('image').src="./images/od15.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==517){
+            document.getElementById('image').src="./images/od16.png";
+
+        }
+    });
+    $("#my_select2").change(function () {
+        S = $(this).children(":selected").attr("value");
+        console.log(S);
+        if(S==518){
+            document.getElementById('image').src="./images/od17.png";
+
+        }
+    });
+
+</script>
 
 </html>
